@@ -5,6 +5,9 @@ function currencyFormat(num) {
   return "Rp " + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
 }
 
+const setToken =
+  "eyJhbGciOiJSUzI1NiJ9.eyJleHBpcnlJbk1pbGxpU2Vjb25kcyI6NjA0ODAwMDAwLCJjcmVhdGVUaW1lIjoxNjEyNjA4NjI3NDAyLCJzZWNyZXQiOiJsL1pEdks2R1Zjc3RoNzlhOXdCcnFaNkVpazgvT3h6S0dUS2hiOEI1MjdqM3c5TjlBM3Qyanp0RXVXS1pSS3N1cHdPWDNrU3VCZWEycTFEVlJlUGlJTnN6TzFPbGlTREhqRExSZHh2TDZrS29QTkF1dDQ0ZG5odmZwUEJ0NFVzdnBCRzVxUUM1TFdCR0EvS1BIWkhMZ3hJRnNRQkxOQUE1b3ltK2p5N0o1RzZQT2VJcFpQSFlDd1BQNzdhajNMUTFwaUxwalpTWXlJRUVwUEYzd3hRVVZhMVRVYlBOVlNTaVlLcmRBNlBDaDBVV1NiZ3AzVlBEcGxCMkRJNk9IZlB6aGxUZGdIVll2NkN5Ym9XU3Rha0tTa0xXdzVxTzR1SkpqZCtSZWdFcE1kbHhxNzhBU04vQjBJMVQ2aE1zU1VrMGFvYVpXMlVYbGQydUh4WFdxaU5iajJ1S3FISXMwWjlvRVJYUTI0OTl3SFU9In0.L3L5HwNBCt-KZXm4Owtm4iZMM92jLFrcLb3VnFcC8oFs8xGgPG3I_PqiePa9dLRvjkLu1R8gg2R6BV1jReAOEJgBhSSEI5Fy81ocFDEZARr7Z4ZrGIbrnsSMSfXEYjbr1WUjyL6imAO4YljcXbCebvoTQ425WjIqSp-EC5DTR92so6pgzfpKc6I-v_xaZnCNGNUDVFycIfxoYoipPo6w_7O9Xgdo9HY8R987WEuq-o4ZHlAfBcWwJxvzY5rDXOs7_bC10d8MPXaPQwCpcNK3gn3AtESihDdD9Iv5LrvX303NtM2FXvJJabs8Yc4HIBIYl_np7a8D30fOYGUMwULBJA";
+
 export default function App() {
   const [open, setOpen] = useState(false);
   // const [error, setError] = useState(false);
@@ -28,8 +31,7 @@ export default function App() {
 
   const fetched = () => {
     const data = {
-      token:
-        "eyJhbGciOiJSUzI1NiJ9.eyJleHBpcnlJbk1pbGxpU2Vjb25kcyI6NjA0ODAwMDAwLCJjcmVhdGVUaW1lIjoxNjEyNTkwNDM4MDk1LCJzZWNyZXQiOiJsL1pEdks2R1Zjc3RoNzlhOXdCcnFaNkVpazgvT3h6S0dUS2hiOEI1MjdqM3c5TjlBM3Qyanp0RXVXS1pSS3N1NlRrRWUxcUdja1F4WitRalZvVm9jdS9kSmxzc2pyeVFxR3N3MWozSVVDdGp5K1lIc1ZGUUt5WGtzSkF1WUhrQ1VVeUFBQjZmeXp2T0l4cFlaVDV1YXJxOEJUSlJFeWlNYUxQNStNUHZySjVVOXRuWFlGR1QrLzdmT3c3M0lsY1VVd3g0a0oydFEvMTIrYWV0ejBHRnhCRXp0aTFDMHppRTNYd0gxSUJKWWFzSkZMczlwcXltWHVZUVgrZXpxSk91SkFOTTg2dUl4RkRIWGVmR0RUUVR0azQyK3JEa2tud3NtbnJnOTVIVHRSRHBabzdCZi8wSm9Gd2lobXd2MmtEM3ZuNkhFQlg5MXR0cWtjQmRQUmhsamJyMlk2VTBGWUhpZ2VuWTdQaEEyLzA9In0.YPiKCvDKRWt97wM1nxtPFdYF8giWguh4i2gwsuKLgWXndLd0DnEFdf2H5fVr6QZ9NsfKncHoiEeUjLsrjmEW03P8Qm2yscvU26eQQNvNpzjD9z4LTU0_3SFe_XXB_QwmxXwEkwCS5P2grzey2p2C7w79QFSZV1UaKO5JSZAkQtK5mpOJQbAxXwTEb5RdpKSMQYLVPRnzhdjikGhWNxCZgXR4lErg2NHfP9zpuxcKvuFbD6It6qXINPVHyi9w8tk563QssSs2lfyfpmvK66Vf6i501KyjwhVbvkSfSyR9ejGTy4z8u1aLR64MG9w1MR-lRDcyrQX9SKyWpPxTjQzpZg",
+      token: setToken,
       nominal: 1,
       tujuan: "08970764238",
     };
@@ -53,8 +55,7 @@ export default function App() {
 
   const fetched2 = () => {
     const data = {
-      token:
-        "eyJhbGciOiJSUzI1NiJ9.eyJleHBpcnlJbk1pbGxpU2Vjb25kcyI6NjA0ODAwMDAwLCJjcmVhdGVUaW1lIjoxNjEyNTkwNDM4MDk1LCJzZWNyZXQiOiJsL1pEdks2R1Zjc3RoNzlhOXdCcnFaNkVpazgvT3h6S0dUS2hiOEI1MjdqM3c5TjlBM3Qyanp0RXVXS1pSS3N1NlRrRWUxcUdja1F4WitRalZvVm9jdS9kSmxzc2pyeVFxR3N3MWozSVVDdGp5K1lIc1ZGUUt5WGtzSkF1WUhrQ1VVeUFBQjZmeXp2T0l4cFlaVDV1YXJxOEJUSlJFeWlNYUxQNStNUHZySjVVOXRuWFlGR1QrLzdmT3c3M0lsY1VVd3g0a0oydFEvMTIrYWV0ejBHRnhCRXp0aTFDMHppRTNYd0gxSUJKWWFzSkZMczlwcXltWHVZUVgrZXpxSk91SkFOTTg2dUl4RkRIWGVmR0RUUVR0azQyK3JEa2tud3NtbnJnOTVIVHRSRHBabzdCZi8wSm9Gd2lobXd2MmtEM3ZuNkhFQlg5MXR0cWtjQmRQUmhsamJyMlk2VTBGWUhpZ2VuWTdQaEEyLzA9In0.YPiKCvDKRWt97wM1nxtPFdYF8giWguh4i2gwsuKLgWXndLd0DnEFdf2H5fVr6QZ9NsfKncHoiEeUjLsrjmEW03P8Qm2yscvU26eQQNvNpzjD9z4LTU0_3SFe_XXB_QwmxXwEkwCS5P2grzey2p2C7w79QFSZV1UaKO5JSZAkQtK5mpOJQbAxXwTEb5RdpKSMQYLVPRnzhdjikGhWNxCZgXR4lErg2NHfP9zpuxcKvuFbD6It6qXINPVHyi9w8tk563QssSs2lfyfpmvK66Vf6i501KyjwhVbvkSfSyR9ejGTy4z8u1aLR64MG9w1MR-lRDcyrQX9SKyWpPxTjQzpZg",
+      token: setToken,
     };
 
     fetch("https://backend-valentine.herokuapp.com/api/v1/ovo/saldo", {
