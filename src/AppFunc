@@ -1,0 +1,266 @@
+import React, { useEffect, useState, useRef } from "react";
+import { TwitterPicker } from "react-color";
+import reactCSS from "reactcss";
+import baffle from "baffle";
+import useTypewriter from "react-typewriter-hook";
+//import Baffle from "baffle-react";
+
+import "./style/App.css";
+import "./style/Heart.css";
+import config from "./config";
+
+export const App = () => {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     bgcolor: "#ff6900",
+  //     displayColorPicker: false,
+  //     text: "",
+  //     isDeleting: false,
+  //     loopNum: 0,
+  //     typingSpeed: 150,
+  //     already: false,
+  //   };
+  // }
+
+  const [background, setBackground] = useState("#ff6900");
+  const [displayCP, setDisplayCP] = useState(false);
+  const [text, setText] = useState("magic is going to happen");
+  const [deleting, setDeleting] = useState(false);
+  const [loop, setLoop] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+  const [already, setAlready] = useState(false);
+  const panggilan = useState(
+    config.panggilan[Math.floor(Math.random() * config.panggilan.length)]
+  );
+  const [greeting, setGreeting] = useState();
+  const [currentDate, setCurrentDate] = useState();
+  const MagicOcean = [
+    "Whatever happens, keep breathing",
+    "Harta, Tahta, Angelia >.<",
+    "Hey! I wuv chuuuu! UwU",
+  ];
+  const [magicName, setMagicName] = useState("magic is going to happen");
+  const intervalRef = useRef({});
+  const ucapan = useTypewriter(magicName);
+  let index = 0;
+
+  useEffect(() => {
+    // mengetik();
+    // setState({
+    //   panggilan:
+    //     config.panggilan[Math.floor(Math.random() * config.panggilan.length)],
+    // });
+    getwaktu();
+  }, []);
+
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      // index = index + 1 > 2 ? 0 : ++index + 1;
+      index = index > 1 ? 0 : ++index;
+      setMagicName(MagicOcean[index]);
+      console.log(index);
+    }, 5000);
+    return function clear() {
+      clearInterval(intervalRef.current);
+    };
+  }, [magicName]);
+
+  const handleClick = () => {
+    // this.setState({ displayColorPicker: !this.state.displayColorPicker });
+    setDisplayCP(!displayCP);
+  };
+
+  const handleClose = () => {
+    // this.setState({ displayColorPicker: false });
+    setDisplayCP(false);
+  };
+
+  const handleChangeComplete = (color) => {
+    // this.setState({ bgcolor: color.hex });
+    setBackground(color.hex);
+    if (color.hex === "#000000") {
+      if (!already) {
+        baffles();
+      }
+    } else {
+      setAlready(false);
+    }
+  };
+
+  const baffles = () => {
+    // this.setState({ already: true });
+    setAlready(true);
+    let b = baffle(document.querySelector(".baffle"));
+    b.set({
+      characters: "█▓█ ▒░/▒░ █░▒▓/ █▒▒ ▓▒▓/█ ░█▒/ ▒▓░ █<░▒ ▓/░>",
+      speed: 120,
+    });
+    b.start();
+    b.reveal(4000);
+  };
+
+  const getwaktu = () => {
+    setInterval(() => {
+      var greeting;
+      var hours = new Date().getHours(); //Current Hours
+      var min = new Date().getMinutes(); //Current Minutes
+      var sec = new Date().getSeconds(); //Current Seconds
+      if (hours >= 18) {
+        greeting = "Evening";
+      } else if (hours >= 15) {
+        greeting = "Afternoon";
+      } else if (hours >= 11) {
+        greeting = "Day";
+      } else if (hours >= 5) {
+        greeting = "Morning";
+      } else if (hours >= 0) {
+        greeting = "Night";
+      }
+      // this.setState({
+      //   curdate: hours + ":" + min + ":" + sec,
+      //   greeting: greeting,
+      // });
+      setCurrentDate(hours + ":" + min + ":" + sec);
+      setGreeting(greeting);
+    }, 0);
+  };
+
+  // const mengetik = () => {
+  //   const ucapan = config.ucapan;
+  //   // const { isDeleting, loopNum, text, typingSpeed } = this.state;
+  //   const i = loop % ucapan.length;
+  //   const fullText = ucapan[i];
+
+  //   // this.setState({
+  //   //   text: deleting
+  //   //     ? fullText.substring(0, text.length - 1)
+  //   //     : fullText.substring(0, text.length + 1),
+  //   //   typingSpeed: deleting ? 30 : 150,
+  //   // });
+
+  //   setText(
+  //     deleting
+  //       ? fullText.substring(0, text.length - 1)
+  //       : fullText.substring(0, text.length + 1)
+  //   );
+  //   setTypingSpeed(deleting ? 30 : 150);
+
+  //   if (!deleting && text === fullText) {
+  //     // setTimeout(() => this.setState({ isDeleting: true }), 500);
+  //     setTimeout(() => setDeleting(true), 500);
+  //   } else if (deleting && text === "") {
+  //     // this.setState({
+  //     //   isDeleting: false,
+  //     //   loopNum: loopNum + 1,
+  //     // });
+  //     setDeleting(false);
+  //     setLoop(loop + 1);
+  //   }
+  //   setTimeout(() => mengetik(), typingSpeed);
+  // };
+
+  const styles = reactCSS({
+    default: {
+      color: {
+        width: "36px",
+        height: "14px",
+        borderRadius: "2px",
+        background: `${background}`,
+      },
+      swatch: {
+        padding: "5px",
+        background: "#fff",
+        borderRadius: "1px",
+        boxShadow: "0 0 0 1px rgba(0,0,0,.1)",
+        display: "inline-block",
+        cursor: "pointer",
+      },
+      popover: {
+        position: "absolute",
+        zIndex: "2",
+      },
+      cover: {
+        position: "fixed",
+        top: "0px",
+        right: "0px",
+        bottom: "0px",
+        left: "0px",
+      },
+    },
+  });
+
+  return (
+    <div
+      className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"
+      style={{
+        backgroundColor: background,
+        transition: "all .7s ease",
+        WebkitTransition: "all .7s ease",
+        MozTransition: "all .7s ease",
+      }}
+    >
+      <header className="masthead mb-auto">
+        <nav className="navbar navbar-expand-md navbar-dark fixed-top">
+          <div className="navbar-brand">
+            <div style={styles.swatch} onClick={() => handleClick()}>
+              <div style={styles.color} />
+            </div>
+            {displayCP ? (
+              <div style={styles.popover}>
+                <div style={styles.cover} onClick={() => handleClose()} />
+                <TwitterPicker
+                  //color={this.state.color}
+                  onChangeComplete={handleChangeComplete}
+                  triangle={"hide"}
+                  colors={config.colors}
+                />
+              </div>
+            ) : null}
+          </div>
+        </nav>
+      </header>
+      <main role="main" className="inner">
+        <div>
+          <div className={background === "#000000" ? "hidden" : "show"}>
+            <h1 className="jam">{currentDate}</h1>
+            <h2 className="panggilan">
+              Good {greeting} {panggilan}
+            </h2>
+            <h3 className="ucapan">
+              {ucapan}
+              <span id="cursor" />
+            </h3>
+            <ul className="heart-shape">
+              <li>
+                <div className="pixelized--heart"></div>
+              </li>
+              <li>
+                <div className="pixelized--heart"></div>
+              </li>
+              <li>
+                <div className="pixelized--heart"></div>
+              </li>
+              <li>
+                <div className="pixelized--heart"></div>
+              </li>
+              <li>
+                <div className="pixelized--heart"></div>
+              </li>
+            </ul>
+          </div>
+          <div className={background !== "#000000" ? "hidden" : "show"}>
+            <h1 className="baffle">
+              Hey njel, do you want to be my shikigami?
+            </h1>
+          </div>
+        </div>
+      </main>
+      <footer className="mastfoot mt-auto">
+        <div className="inner">
+          <div></div>
+        </div>
+      </footer>
+    </div>
+  );
+};
