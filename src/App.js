@@ -23,7 +23,7 @@ export default function App() {
   };
 
   const clicked = (e) => {
-    date(new Date()) !== "14-2" ? setOpen(!open) : setError(true);
+    date(new Date()) === "14-2" ? setOpen(!open) : setError(true);
     // date(new Date()) === "14-2" ? setOpen(!open) : alert("buka tgl 14");
     // setOpen(!open);
     // fetched();

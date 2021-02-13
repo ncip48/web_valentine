@@ -7,7 +7,7 @@ function Polaroid() {
     <div>
       <div className="wrapper">
         <h2 style={{ textAlign: "left", marginLeft: 20 }}>
-          Happy valentine day 2021 <em>❤</em>
+          Happy valentine's day 2021 <em>❤</em>
         </h2>
         <div className="item">
           <div className="polaroid">
