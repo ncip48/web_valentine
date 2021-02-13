@@ -23,12 +23,16 @@ export default function App() {
   };
 
   const clicked = (e) => {
-    date(new Date()) === "14-2" ? setOpen(!open) : setError(true);
+    if (date(new Date()) !== "14-2") {
+      setOpen(!open);
+      new Audio(require("./acha.mp3")).play();
+    } else {
+      setError(true);
+    }
     // date(new Date()) === "14-2" ? setOpen(!open) : alert("buka tgl 14");
     // setOpen(!open);
     // fetched();
     // fetched2();
-    new Audio(require("./acha.mp3")).play();
   };
 
   // const fetched = () => {
