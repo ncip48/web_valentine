@@ -14,7 +14,8 @@
     "react-dom": "^16.13.1",
     "react-particles-js": "^3.2.1",
     "react-scripts": "3.4.1",
-    "react-typewriter-hook": "^1.0.1"
+    "react-typewriter-hook": "^1.0.1",
+    "typeit-react": "^0.1.3"
   },
   "scripts": {
     "start": "react-scripts start",

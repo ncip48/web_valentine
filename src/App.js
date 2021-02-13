@@ -28,6 +28,7 @@ export default function App() {
     // setOpen(!open);
     // fetched();
     // fetched2();
+    new Audio(require("./acha.mp3")).play();
   };
 
   // const fetched = () => {
