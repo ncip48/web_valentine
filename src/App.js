@@ -23,7 +23,7 @@ export default function App() {
   };
 
   const clicked = (e) => {
-    if (date(new Date()) === "14-2") {
+    if (date(new Date()) !== "14-2") {
       setOpen(!open);
       new Audio(require("./acha.mp3")).play();
     } else {
